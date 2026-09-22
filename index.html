@@ -8,22 +8,33 @@
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8CW2MGPRX"></script>
 
-    <script>
-        window.dataLayer = window.dataLayer || [];
+<script>
+    // Lê o UTM da URL
+    const params = new URLSearchParams(window.location.search);
+    const origem = params.get('utm_source');
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+    // Mostra a origem no título da aba
+    if (origem) {
+        document.title = 'Testemunhos — ' + origem;
+    }
 
-        gtag('js', new Date());
-        gtag('config', 'G-Z8CW2MGPRX');
+    // Google Analytics
+    window.dataLayer = window.dataLayer || [];
 
-        // Aguarda 5 segundos antes de redirecionar
-        setTimeout(function() {
-            window.location.href =
-                'https://www.youtube.com/playlist?list=PLANcnf-hsZ85GXJoTp3lzhLg31sEymIo_';
-        }, 5000);
-    </script>
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-Z8CW2MGPRX');
+
+    // Aguarda 5 segundos antes de redirecionar
+    setTimeout(function() {
+        window.location.href =
+            'https://www.youtube.com/playlist?list=PLANcnf-hsZ85GXJoTp3lzhLg31sEymIo_';
+    }, 5000);
+</script>
+
 </head>
 
 <body>
