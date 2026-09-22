@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +7,7 @@
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8CW2MGPRX"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -16,13 +18,11 @@
         gtag('js', new Date());
         gtag('config', 'G-Z8CW2MGPRX');
 
-        // Aguarda o envio do GA4 antes de redirecionar
-        gtag('event', 'page_view_redirect', {
-            event_callback: function() {
-                window.location.href = 'https://www.youtube.com/playlist?list=PLANcnf-hsZ85GXJoTp3lzhLg31sEymIo_';
-            },
-            event_timeout: 3000
-        });
+        // Aguarda 5 segundos antes de redirecionar
+        setTimeout(function() {
+            window.location.href =
+                'https://www.youtube.com/playlist?list=PLANcnf-hsZ85GXJoTp3lzhLg31sEymIo_';
+        }, 5000);
     </script>
 </head>
 
@@ -30,3 +30,4 @@
     <p>Redirecionando...</p>
 </body>
 </html>
+```
