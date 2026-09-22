@@ -8,20 +8,22 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8CW2MGPRX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
-
         gtag('config', 'G-Z8CW2MGPRX');
-    </script>
 
-    <!-- Redirecionamento -->
-    <!--
-    <script>
-        setTimeout(function() {
-            window.location.href = "https://www.youtube.com/playlist?list=PLANcnf-hsZ85GXJoTp3lzhLg31sEymIo_";
-        }, 2000);
+        // Aguarda o envio do GA4 antes de redirecionar
+        gtag('event', 'page_view_redirect', {
+            event_callback: function() {
+                window.location.href = 'https://www.youtube.com/playlist?list=PLANcnf-hsZ85GXJoTp3lzhLg31sEymIo_';
+            },
+            event_timeout: 3000
+        });
     </script>
-    -->
 </head>
 
 <body>
