@@ -7,33 +7,43 @@
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8CW2MGPRX"></script>
 
-<script>
-    // Lê o UTM da URL
-    const params = new URLSearchParams(window.location.search);
-    const origem = params.get('utm_source');
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-    // Mostra a origem no título da aba
-    if (origem) {
-        document.title = 'Testemunhos — ' + origem;
-    }
+        function gtag() {
+            dataLayer.push(arguments);
+        }
 
-    // Google Analytics
-    window.dataLayer = window.dataLayer || [];
+        gtag('js', new Date());
+        gtag('config', 'G-Z8CW2MGPRX');
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
+        // Identifica os parâmetros da campanha
+        const params = new URLSearchParams(window.location.search);
 
-    gtag('js', new Date());
-    gtag('config', 'G-Z8CW2MGPRX');
+        const source = params.get('utm_source');
+        const medium = params.get('utm_medium');
+        const campaign = params.get('utm_campaign');
 
-    // Aguarda 5 segundos antes de redirecionar
-    setTimeout(function() {
-        window.location.href =
-            'https://www.youtube.com/playlist?list=PLANcnf-hsZ85GXJoTp3lzhLg31sEymIo_';
-    }, 5000);
-</script>
+        // Mostra a origem no título da página
+        if (source) {
+            document.title = 'Testemunhos — ' + source;
+        }
 
+        // Envia a campanha explicitamente para o GA4
+        if (source) {
+            gtag('event', 'campaign_visit', {
+                campaign_source: source,
+                campaign_medium: medium,
+                campaign_name: campaign
+            });
+        }
+
+        // Redireciona para o YouTube após 1 segundo
+        setTimeout(function() {
+            window.location.href =
+                'https://www.youtube.com/playlist?list=PLANcnf-hsZ85GXJoTp3lzhLg31sEymIo_';
+        }, 1000);
+    </script>
 </head>
 
 <body>
